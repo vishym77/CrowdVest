@@ -2,7 +2,7 @@ import app from 'firebase/app';
 import 'firebase/auth';
 
 const config = {
-    apiKey: `${process.env.REACT_APP_API_KEY_YT}`,
+    apiKey: "AIzaSyCdR4il_KY8YyExnqiNW57Fmm5tl-qmJHo",
     authDomain: "https://crowdvest.firebaseapp.com/",
     databaseURL: "",
     projectId: "crowdvest-84514",
