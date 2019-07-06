@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { Component }from 'react';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
 
 import { SignUpLink } from '../SignUp';
-import { withFireBase } from '../Firebase'
+import { withFirebase } from '../Firebase'
 import * as ROUTES from '../../constants/routes';
 
 import style from "./style";
@@ -13,6 +13,7 @@ const SignInPage = () => (
     <h1>Sign In</h1>
     <SignInForm />
     <SignUpLink />
+    <SignInGoogle />
   </div>
 );
 
@@ -22,7 +23,7 @@ const INITIAL_STATE = {
   error: null
 };
 
-class SignInFormBase extends React.Component {
+class SignInFormBase extends Component {
   constructor(props) {
     super(props);
 
@@ -38,7 +39,9 @@ class SignInFormBase extends React.Component {
         this.setState({ ...INITIAL_STATE});
         this.props.history.push(ROUTES.HOME);
       })
-      .catch(error => { error });
+      .catch(error => { 
+        this.setState({error });
+      });
 
     event.preventDefault();
   };
@@ -59,7 +62,7 @@ class SignInFormBase extends React.Component {
     const isInvalid = password === '' || email === '';
 
     return(
-      <form>
+      <form onSubmit={this.onSubmit}>
         <input 
           name="email"
           style={style.form}
@@ -80,15 +83,67 @@ class SignInFormBase extends React.Component {
 
         {error && <p>{error.message}</p>}
       </form>
-    )
+    );
+  }
+}
+
+class SignInGoogleBase extends Component {
+  constructor(props) {
+    super(props);
+    
+    this.state = { error: null };
+  }
+
+  onSubmit = event => {
+    this.props.firebase
+      .doSignInWithGoogle()
+      .then(socialAuthUser => {
+        // Create a user in your Firebase Realtime Database too
+        this.props.firebase
+          .user(socialAuthUser.user.uid)
+          .set({
+            username: socialAuthUser.user.displayName,
+            email: socialAuthUser.user.email,
+            roles: [],
+          })
+          .then(() => {
+            this.setState({ error: null });
+            this.props.history.push(ROUTES.HOME);
+          })
+          .catch(error => {
+            this.setState({ error });
+          });
+      })
+      .catch(error => {
+        this.setState({ error });
+      });
+
+    event.preventDefault();
+  };
+
+  render() {
+    const { error } = this.state;
+
+    return (
+      <form onSubmit={this.onSubmit}>
+        <button type="submit">Sign In with Google</button>
+
+        {error && <p>{error.message}</p>}
+      </form>
+    );
   }
 }
 
 const SignInForm = compose(
   withRouter,
-  withFireBase,
+  withFirebase,
 )(SignInFormBase);
+
+const SignInGoogle = compose(
+  withRouter,
+  withFirebase,
+)(SignInGoogleBase);
 
 export default SignInPage;
 
-export { SignInForm }
+export { SignInForm, SignInGoogle };
