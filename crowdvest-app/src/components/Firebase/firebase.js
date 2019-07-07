@@ -16,6 +16,11 @@ const config = {
 
       this.auth = app.auth();
 
+<<<<<<< HEAD
+=======
+      this.db = app.database();
+
+>>>>>>> aaf05a69afb26a94dc25358457424d4aefb92d41
       this.googleProvider = new app.auth.GoogleAuthProvider();
     }
 
@@ -30,7 +35,10 @@ const config = {
   doSignInWithGoogle = () =>
     this.auth.signInWithPopup(this.googleProvider);
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> aaf05a69afb26a94dc25358457424d4aefb92d41
   doSignOut = () => this.auth.signOut();
 
   doPasswordReset = email => this.auth.sendPasswordResetEmail(email);
