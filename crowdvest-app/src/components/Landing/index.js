@@ -4,7 +4,7 @@ import  { FirebaseContext } from '../Firebase';
 
 const Landing = () => (
   <div>
-    <h1>Home</h1>
+    <h1>Landing</h1>
   </div>
 );
 
