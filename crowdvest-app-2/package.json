@@ -2,7 +2,7 @@
   "name": "paper-dashboard-react",
   "version": "1.1.0",
   "private": true,
-  "homepage": "https://demos.creative-tim.com/paper-dashboard-react/#/dashboard",
+  "homepage": "https://crowdvest-84514.firebaseapp.com/",
   "dependencies": {
     "bootstrap": "4.3.1",
     "chart.js": "2.8.0",
