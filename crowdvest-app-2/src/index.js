@@ -27,15 +27,22 @@ import "assets/demo/demo.css";
 import "perfect-scrollbar/css/perfect-scrollbar.css";
 
 import AdminLayout from "layouts/Admin.jsx";
+import SignInPage from "views/SignIn";
+import SignUpPage from "views/SignUp";
+import Firebase, { FirebaseContext } from './components/Firebase';
 
 const hist = createBrowserHistory();
 
 ReactDOM.render(
+  <FirebaseContext.Provider value={new Firebase()}>
   <Router history={hist}>
     <Switch>
-      <Route path="/admin" render={props => <AdminLayout {...props} />} />
-      <Redirect to="/admin/dashboard" />
+      <Route path="/signin" component={SignInPage}/>
+      <Route path="/signup" component={SignUpPage}/>
+      {/* <Route path="/admin" render={props => <AdminLayout {...props} />} />
+      <Redirect to="/admin/dashboard" /> */}
     </Switch>
-  </Router>,
+  </Router>
+  </FirebaseContext.Provider>,
   document.getElementById("root")
 );
