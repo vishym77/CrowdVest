@@ -1,24 +1,9 @@
-/*!
-
-=========================================================
-* Paper Dashboard React - v1.1.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/paper-dashboard-react
-* Copyright 2019 Creative Tim (https://www.creative-tim.com)
-
-* Licensed under MIT (https://github.com/creativetimofficial/paper-dashboard-react/blob/master/LICENSE.md)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
 import Dashboard from "views/Dashboard.jsx";
 import Notifications from "views/Notifications.jsx";
 import UserPage from "views/User.jsx";
+import SignUp from "views/SignUp";
+import SignInPage from "views/SignIn";
+import SignUpPage from "views/SignUp";
 
 var routes = [
   {
@@ -27,6 +12,18 @@ var routes = [
     icon: "nc-icon nc-bank",
     component: Dashboard,
     layout: "/admin"
+  },
+  {
+    path: "/signup",
+    name: "Sign Up",
+    icon: "nc-icon nc-bank",
+    component: SignUpPage,
+  },
+  {
+    path: "/signin",
+    name: "Sign In",
+    icon: "nc-icon nc-bank",
+    component: SignInPage,
   },
   {
     path: "/notifications",
