@@ -11,7 +11,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   padding: 0;
   background: url(/img/swag.png) no-repeat;
-  background-size: 100%;
+  background-size: cover;
   background-position: bottom;
 }
 

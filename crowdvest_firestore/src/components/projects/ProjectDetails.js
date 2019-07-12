@@ -37,20 +37,6 @@ const ProjectDetails = (props) => {
       </div>
     )
   }
-  return (
-    <div className='container section project-details'>
-      <div className='card z-depth-0'>
-        <div className='card-content'>
-          <span className= "card-title"></span>
-          <p> This is where group information will eventually be stored</p>
-        </div>
-        <div className="card action grey lighten-3 grey-text">
-          <div> Posted by Group Creator/GroupOwner </div>
-          <div> more information about group is here </div>
-        </div>
-      </div>
-    </div>
-  )
 }
 
 const mapStateToProps = (state, ownProps) => {
