@@ -18,16 +18,16 @@ class CreateProject extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state)
-  }
+    this.props.createProject(this.state);
+    this.props.history.push('/');  }
 
 
   render(){
     return(
       <div className="container">
-        <form onSubmit={this.handleSubmit} className="white">
+        <form className="white" onSubmit={this.handleSubmit}>
 
-          <h5 className = "grey-text text-darken-3">Create Group</h5>
+          <h5 className = "grey-text text-darken-3">Create a Group</h5>
 
           <div className="input-field">
             <label htmlFor= "title">Group Name</label>
@@ -35,12 +35,12 @@ class CreateProject extends Component {
           </div>
 
           <div className="input-field">
+          <textarea id="content" className="materialize-textarea"  onChange={this.handleChange}></textarea>
             <label htmlFor= "content">Group Information</label>
-            <textarea id="content" className="materialize-textarea"  onChange={this.handleChange}></textarea>
           </div>
 
           <div className="input-field">
-            <button className= "btn pink lighten-1  z-depth-0">Login</button>
+            <button className= "btn pink lighten-1  z-depth-0">Create</button>
           </div>
         </form>
       </div>
@@ -53,4 +53,4 @@ const mapDispatchToProps = (dispatch) => {
     createProject: (project) => dispatch(createProject(project))
   }
 }
-export default connect()(CreateProject)
+export default connect(null, mapDispatchToProps)(CreateProject)
