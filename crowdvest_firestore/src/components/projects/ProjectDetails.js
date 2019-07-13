@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 import { Redirect } from 'react-router-dom'
+import moment from 'moment'
 
 //Video 7 creates ProjectDetails page
 // The Posted by Group owner box doesn't match, and this is a bug
@@ -26,7 +27,7 @@ const ProjectDetails = (props) => {
           </div>
           <div className="card action grey lighten-3 grey-text">
             <div> Posted by {project.authorFirstName} {project.authorLastName}</div>
-            <div> more information about group is here </div>
+            <div> {moment(project.createdAt.toDate()).calendar()}</div>
           </div>
         </div>
       </div>
