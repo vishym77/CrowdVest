@@ -5,8 +5,8 @@ import Dashboard from './components/dashboard/Dashboard'
 import ProjectDetails from './components/projects/ProjectDetails'
 import SignIn from './components/auth/SignIn'
 import SignUp from './components/auth/SignUp'
-import CreateProject from './components/projects/CreateProject'
-import CreateProfile from './components/profiles/CreateProfile'
+import CreateProject from './components/projects/CreateProject' 
+import Profile from './components/profiles/Profile'
 
 //route exact path means that url.com/ takes us to dashboard
 // underneath this, it shows that url/project takes us to
@@ -26,7 +26,9 @@ class App extends Component {
           <Route path ='/signin' component= {SignIn} />
           <Route path ='/signup' component= {SignUp} />
           <Route path ='/create' component= {CreateProject} />
-          <Route path ='/createprof' component= {CreateProfile} />
+          <Route path ='/profile/:id' component = {Profile} />
+          {/* <Route path ='/createprof' component= {CreateProfile} /> */}
+          {/* <Route path ='/profile' component= {Profile} /> */}
         </Switch>
       </div>
     </BrowserRouter>

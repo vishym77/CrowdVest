@@ -2,23 +2,30 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { signUp } from '../../store/actions/authActions'
+import { signUpProfile } from '../../store/actions/profileActions'
 
 class SignUp extends Component {
   state = {
     email: '',
+    userName: '',
     password: '',
     firstName: '',
-    lastName: '',
+    lastName: ''
   }
+
   handleChange = (e) => {
     this.setState({
       [e.target.id]: e.target.value
     })
   }
+
   handleSubmit = (e) => {
-    e.preventDefault();
-    this.props.signUp(this.state);
+      e.preventDefault();
+      this.props.signUp(this.state);
+      this.props.signUpProfile(this.state);
+      this.props.history.push('/');
   }
+
   render() {
     const { auth, authError } = this.props;
     if (auth.uid) return <Redirect to='/' /> 
@@ -29,6 +36,10 @@ class SignUp extends Component {
           <div className="input-field">
             <label htmlFor="email">Email</label>
             <input type="email" id='email' onChange={this.handleChange} />
+          </div>
+          <div className="input-field">
+            <label htmlFor="userName">User Name</label>
+            <input type="text" id='userName' onChange={this.handleChange} />
           </div>
           <div className="input-field">
             <label htmlFor="password">Password</label>
@@ -63,7 +74,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch)=> {
   return {
-    signUp: (creds) => dispatch(signUp(creds))
+    signUp: (creds) => dispatch(signUp(creds)),
+    signUpProfile: (profile) => dispatch(signUpProfile(profile))
   }
 }
 

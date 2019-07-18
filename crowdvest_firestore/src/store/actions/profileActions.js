@@ -1,4 +1,4 @@
-export const createProfile = (profile) => {
+export const signUpProfile = (profile) => {
     return (dispatch, getState, { getFirebase, getFirestore } ) => {
         //make async call to database
         const firestore = getFirestore();
@@ -10,12 +10,12 @@ export const createProfile = (profile) => {
             ...profile,
             authorFirstName: profile.firstName, 
             authorLastName: profile.lastName,
+            userName: profile.userName,
             authorId: authorId,
-            createdAt: new Date()
         }).then(() => {
-            dispatch({ type: 'CREATE_PROJECT_SUCCESS' });  
+            dispatch({ type: 'CREATE_PROFILE_SUCCESS' });  
         }).catch((err) => {
-            dispatch({ type: 'CREATE_PROJECT_ERROR', err});
+            dispatch({ type: 'CREATE_PROFILE_ERROR', err});
         })
     }
 };
