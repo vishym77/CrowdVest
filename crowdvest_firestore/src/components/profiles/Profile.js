@@ -17,11 +17,11 @@ const Profile = (props) => {
 
     if (profile) {
       return(
-        <div className= "profile container">
-        <div className= "row">
-          <div className= "col s12 m6">
-              <h1>Uh Huh{profile.userName}</h1>
-          </div>
+      <div className= "card z-depth-0 project-summary">
+        <div className= "card-content grey-text text-darken-3">
+          <span className= "card-title">User: {profile.userName}</span>
+            <p>First Name: {profile.firstName}</p>
+            <p>Last Name: {profile.lastName}</p>
         </div>
       </div>
       )
@@ -29,7 +29,7 @@ const Profile = (props) => {
     else {
       return (
         <div className="container center">
-          <p>Loading Group...</p>
+          <p>Loading User...</p>
         </div>
       )
     }
@@ -78,7 +78,8 @@ const mapStateToProps = (state, ownProps) => {
 export default compose(
   connect(mapStateToProps),
   firestoreConnect([
-    { collection: 'profiles', orderBy: ['createdAt', 'desc'] },
+    // { collection: 'users', orderBy: ['userName']}
+    { collection: 'profiles'},
     { collection: 'projects', orderBy: ['createdAt', 'desc'] },
     { collection: 'notifications', limit: 3, orderBy: ['time', 'desc']}
   ])

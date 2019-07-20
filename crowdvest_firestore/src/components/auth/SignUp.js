@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { signUp } from '../../store/actions/authActions'
-import { signUpProfile } from '../../store/actions/profileActions'
 
 class SignUp extends Component {
   state = {
@@ -22,7 +21,7 @@ class SignUp extends Component {
   handleSubmit = (e) => {
       e.preventDefault();
       this.props.signUp(this.state);
-      this.props.signUpProfile(this.state);
+      // this.props.signUpProfile(this.state);
       this.props.history.push('/');
   }
 
@@ -74,8 +73,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch)=> {
   return {
-    signUp: (creds) => dispatch(signUp(creds)),
-    signUpProfile: (profile) => dispatch(signUpProfile(profile))
+    // signUpProfile: (pro_file) => dispatch(signUpProfile(pro_file)),
+    signUp: (creds) => dispatch(signUp(creds))
   }
 }
 

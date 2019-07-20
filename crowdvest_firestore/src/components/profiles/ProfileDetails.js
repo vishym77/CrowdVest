@@ -23,7 +23,7 @@ const ProfileDetails = (props) => {
       <div className='container section profile-details'>
         <div className='card z-depth-0'>
           <div className='card-content'>
-            <p>{ profile.authorFirstName }</p>
+            <p>{ profile.userName }</p>
           </div>
         </div>
       </div>
