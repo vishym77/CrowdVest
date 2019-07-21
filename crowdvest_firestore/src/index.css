@@ -11,7 +11,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   padding: 0;
   background: url(/img/swag.png) no-repeat;
-  background-size: 100%;
+  background-size: cover;
   background-position: bottom;
 }
 
@@ -36,3 +36,11 @@ textarea.materialize-textarea:focus:not([readonly]){
   border-color: #ec407a;
   box-shadow: none;
 }
+
+input[type=text]:not(.browser-default):focus:not([readonly]) + label,
+textarea.materialize-textarea:focus:not([readonly]) + label,
+input[type=email]:not(.browser-default):focus:not([readonly]) + label,
+input[type=password]:not(.browser-default):focus:not([readonly]) + label{
+  color: #ec407a !important;
+}
+

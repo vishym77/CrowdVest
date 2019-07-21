@@ -11,23 +11,19 @@ import moment from 'moment'
 //Highly possible that we can just delete this as it isn't needed
 //Group Name should probably be in bold
 
-const ProjectDetails = (props) => {
+const ProfileDetails = (props) => {
 
   //This pulls the Project Id from the url
   //Later on it should tell us which group's details we are looking at
-  const { project, auth } = props;
+  const { profile, auth } = props;
   if(!auth.uid) return <Redirect to = '/signin' />
-  if (project) {
+  //console.log(profile)
+  if (profile) {
     return(
-      <div className='container section project-details'>
+      <div className='container section profile-details'>
         <div className='card z-depth-0'>
           <div className='card-content'>
-            <span className= "card-title">{ project.title }</span>
-            <p>{ project.content }</p>
-          </div>
-          <div className="card action grey lighten-3 grey-text">
-            <div> Posted by {project.authorFirstName} {project.authorLastName}</div>
-            <div> {moment(project.createdAt.toDate()).calendar()}</div>
+            <p>{ profile.userName }</p>
           </div>
         </div>
       </div>
@@ -36,7 +32,7 @@ const ProjectDetails = (props) => {
   else {
     return (
       <div className="container center">
-        <p>Loading Group...</p>
+        <p>Loading Profile...</p>
       </div>
     )
   }
@@ -44,16 +40,18 @@ const ProjectDetails = (props) => {
 
 const mapStateToProps = (state, ownProps) => {
   const id = ownProps.match.params.id;
-  const projects = state.firestore.data.projects;
-  const project = projects ? projects[id] : null
+  console.log(id)
+  const profiles = state.firestore.data.profiles;
+  const profile = profiles ? profiles[id] : null
+
   return {
-    project: project,
+    profile: profile,
     auth: state.firebase.auth
   }
 }
 export default compose(
   connect(mapStateToProps),
   firestoreConnect([
-    { collection: 'projects' }
+    { collection: 'profiles' }
   ])
-)(ProjectDetails)
+)(ProfileDetails)

@@ -1,27 +1,30 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import SignedInLinks from './SignedInLinks'
 import SignedOutLinks from './SignedOutLinks'
+import { connect } from 'react-redux'
 
+const Navbar = (props) => {
+  const { auth, profile } = props;
+  // console.log(auth);
+  const links = auth.uid ? <SignedInLinks profile={profile} /> : <SignedOutLinks />;
 
-const Navbar = () => {
-  return(
-    //this generates a wrapper for the navigation and makes it look better
-    //We will add functionality later to
-    //only display SignedInLinks to users who are signed in
-    //This will also only display SignedOutLinks to users not
-    //signed in.
-    
-    <nav className = "nav-wrapper grey darken-3">
+  return (
+    <nav className="nav-wrapper grey darken-3">
       <div className="container">
-        <Link to='/' className="brand-logo">Crowd-Vest</Link>
-        <SignedInLinks />
-        <SignedOutLinks />
+        <Link to='/' className="brand-logo">CrowdVest</Link>
+        {links}
       </div>
     </nav>
   )
-
 }
 
+const mapStateToProps = (state) => {
+  console.log(state);
+  return{
+    auth: state.firebase.auth,
+    profile: state.firebase.profile
+  }
+}
 
-export default Navbar
+export default connect(mapStateToProps)(Navbar)

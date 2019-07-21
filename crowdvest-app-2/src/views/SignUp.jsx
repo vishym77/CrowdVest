@@ -10,14 +10,26 @@ import {
 // import { withFireBase } from '../Firebase'
 // import * as ROUTES from 'routes';
 
-// const SignUp = () => (
-//   <div>
-//     <h1>SignUp</h1>
-//     <SignUpForm />
-//   </div>
-// );
+const SignUpPage = () => (
+  <div>
+    <SignUpFormBase />
+  </div>
+);
 
-class SignUpPage extends Component {
+class SignUpFormBase extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { ...INITIAL_STATE };
+
+  }
+  onSubmit = event => {
+
+  }
+
+  onChange = event => {
+
+  };
     validateEmail(e) {
         const emailRex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         const { validate } = this.state
@@ -68,19 +80,21 @@ class SignUpPage extends Component {
             </FormGroup>
           </Col>
           <Button>Submit</Button>
+          <form onSubmit={this.onSubmit}>
+          </form>
         </Form>
       </Container>
     );
   }
 }
 
-// const INITIAL_STATE = {
-//   username: '',
-//   email: '',
-//   passwordOne: '',
-//   passwordTwo: '',
-//   error: null
-// };
+const INITIAL_STATE = {
+  username: '',
+  email: '',
+  passwordOne: '',
+  passwordTwo: '',
+  error: null
+};
 
 // class SignUpFormBase extends Component {
 //   constructor(props) {

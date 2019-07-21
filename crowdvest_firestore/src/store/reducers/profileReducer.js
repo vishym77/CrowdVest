@@ -10,17 +10,17 @@ const initState = {}
 
 // in tutorial, called projectReducer
 
-const projectReducer = (state = initState, action) => {
+const profileReducer = (state = initState, action) => {
     switch (action.type) {
-        case 'CREATE_PROJECT_SUCCESS':
-            console.log('create project success', action.project);
+        case 'CREATE_PROFILE_SUCCESS':
+            console.log('create profile success', action.profile);
             return state;
-        case 'CREATE_PROJECT_ERROR':
-            console.log('create project error', action.err);
+        case 'CREATE_PROFILE_ERROR':
+            console.log('create profile error', action.err);
             return state;
         default:
             return state;    
     }
 };
 
-export default projectReducer;
+export default profileReducer;
