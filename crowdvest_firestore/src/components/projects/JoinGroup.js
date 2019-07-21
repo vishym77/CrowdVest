@@ -46,6 +46,7 @@ class JoinGroup extends Component {
     }
   }
   
+  //this calls the action creator groupActions
   const mapDispatchToProps = (dispatch) => {
     return {
       joinGroup: (project) => dispatch(joinGroup(project))

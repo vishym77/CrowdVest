@@ -6,11 +6,7 @@ import { Redirect } from 'react-router-dom'
 import JoinGroup from './JoinGroup'
 import { joinGroup } from '../../store/actions/groupActions';
 
-//Video 7 creates ProjectDetails page
-// The Posted by Group owner box doesn't match, and this is a bug
-//This is probably a materialize issue
-//Highly possible that we can just delete this as it isn't needed
-//Group Name should probably be in bold
+// joinGroup may not have to be imported
 
 const ProjectDetails = (props) => {
 
