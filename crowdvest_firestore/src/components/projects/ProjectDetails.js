@@ -3,7 +3,8 @@ import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 import { Redirect } from 'react-router-dom'
-
+import JoinGroup from './JoinGroup'
+import { joinGroup } from '../../store/actions/groupActions';
 
 //Video 7 creates ProjectDetails page
 // The Posted by Group owner box doesn't match, and this is a bug
@@ -24,41 +25,15 @@ const ProjectDetails = (props) => {
           <div className='card-content'>
             <span className= "card-title">{ project.title }</span>
             <p>{ project.content }</p>
-
-            <div className="input-field">
-            <button className= "btn pink lighten-1  z-depth-0">Join Group</button>
-          </div>  
-
-              {/* if user in group already dont display button */}
-
           </div>
-          
           <div className="card action grey lighten-3 grey-text">
-            <div> Posted by {project.authorFirstName} {project.authorLastName}</div>
-             {/* <div> {moment(project.createdAt.toDate()).calendar()}</div>  */}
-          </div>
-
-        </div>
-              {/* this is the template of where member requests are managed by group owner */}
-
-      <div className='container section member-requests'>
-        <div className='card z-depth-0'>
-            <div className='card-content'>
-              <span className= "card-title">Member wants to join the group </span>
-              <ul> 
-                <p> Robert</p>
-                <div className="input-field">
-            <button className= "btn pink lighten-1  z-depth-0">Accept</button>
-          </div><div className="input-field">
-            <button className= "btn pink lighten-1  z-depth-0">Deny</button>
-          </div>
-              </ul>
-
-            </div>
+            <div> Contact Group Portfolio Manager at {project.authorEmail} </div>
           </div>
         </div>
-    </div>
+        
+        <JoinGroup />
 
+      </div>
     )
   }
   else {

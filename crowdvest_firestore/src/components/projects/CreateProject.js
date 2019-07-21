@@ -3,11 +3,13 @@ import { connect } from 'react-redux'
 import { createProject } from '../../store/actions/projectActions'
 import { Redirect } from 'react-router-dom'
 
-class CreateProject extends Component {
+//this populates project with a title and content
+//Thats what is being pushed to the database with this structure
+
+class CreateProject extends Component { 
   state = {
     title: '',
     content: ''
-
   }
 
   handleChange = (e) => {
@@ -22,10 +24,13 @@ class CreateProject extends Component {
     this.props.createProject(this.state);
     this.props.history.push('/');  }
 
+//The code below takes in Group Name and Group information(using HandleChange)
+//
+
 
   render(){
     const { auth } = this.props;
-    if(!auth.uid) return <Redirect to = '/signin' />
+    if(!auth.uid) return <Redirect to = '/signin' />    //Checks if user is signedin
     return(
       <div className="container">
         <form className="white" onSubmit={this.handleSubmit}>
