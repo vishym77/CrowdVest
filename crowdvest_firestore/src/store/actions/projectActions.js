@@ -10,7 +10,7 @@ export const createProject = (project) => {
         const authorEmail = getState().firebase.auth.email;
 
 
-        firestore.collection("projects").add({
+        firestore.collection("projects").doc(authorEmail).set({
             ...project,
             authorFirstName: profile.firstName, 
             authorLastName: profile.lastName,

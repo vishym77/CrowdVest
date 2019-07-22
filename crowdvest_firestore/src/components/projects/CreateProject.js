@@ -6,7 +6,11 @@ import { Redirect } from 'react-router-dom'
 class CreateProject extends Component {
   state = {
     title: '',
-    content: ''
+    content: '',
+    group_return: '',
+    sp500_return: '',
+    fund_beta: ''
+    
 
   }
 
@@ -39,7 +43,22 @@ class CreateProject extends Component {
 
           <div className="input-field">
           <textarea id="content" className="materialize-textarea"  onChange={this.handleChange}></textarea>
-            <label htmlFor= "content">Group Information</label>
+            <label htmlFor= "content">Group Strategy Information </label>
+          </div>
+
+          <div className="input-field">
+          <textarea id="group_return" className="materialize-textarea"  onChange={this.handleChange}></textarea>
+            <label htmlFor= "content">Annualized Group Return Since Inception</label>
+          </div>
+
+          <div className="input-field">
+          <textarea id="sp500_return" className="materialize-textarea"  onChange={this.handleChange}></textarea>
+            <label htmlFor= "content">Annualized SP500 Return Since Inception</label>
+          </div>
+
+          <div className="input-field">
+          <textarea id="fund_beta" className="materialize-textarea"  onChange={this.handleChange}></textarea>
+            <label htmlFor= "content">Group Beta Since Inception</label>
           </div>
 
           <div className="input-field">

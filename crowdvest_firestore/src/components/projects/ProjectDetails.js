@@ -5,6 +5,7 @@ import { compose } from 'redux'
 import { Redirect } from 'react-router-dom'
 import JoinGroup from './JoinGroup'
 import { joinGroup } from '../../store/actions/groupActions';
+import { interfaceDeclaration } from '@babel/types';
 
 // joinGroup may not have to be imported
 
@@ -20,14 +21,29 @@ const ProjectDetails = (props) => {
         <div className='card z-depth-0'>
           <div className='card-content'>
             <span className= "card-title">{ project.title }</span>
-            <p>{ project.content }</p>
+            <p>Investment Philosophy: <br></br>  { project.content }</p>
+
+            <br></br>
+
+            <p>Annualized Group Return Since Inception:  { project.group_return }</p>
+
+            <br></br>
+
+            <p>Annualized SP500 Return Since Inception:  { project.sp500_return }</p>
+
+            <br></br>
+
+            <p>Fund Beta Since Inception:  { project.fund_beta }</p>
+
+
+      
           </div>
           <div className="card action grey lighten-3 grey-text">
             <div> Contact Group Portfolio Manager at {project.authorEmail} </div>
           </div>
         </div>
         
-        <JoinGroup />
+       {/* join group is linked here */}
 
       </div>
     )
