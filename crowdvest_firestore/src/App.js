@@ -7,6 +7,7 @@ import SignIn from './components/auth/SignIn'
 import SignUp from './components/auth/SignUp'
 import CreateProject from './components/projects/CreateProject' 
 import Profile from './components/profiles/Profile'
+import Landing from './components/landing/Landing'
 
 //route exact path means that url.com/ takes us to dashboard
 // underneath this, it shows that url/project takes us to
@@ -22,6 +23,7 @@ class App extends Component {
         <Navbar />
         <Switch>
           <Route exact path ='/' component= {Dashboard} />
+          <Route path = '/landing' component= {Landing} />
           <Route path ='/project/:id' component= {ProjectDetails} />
           <Route path ='/signin' component= {SignIn} />
           <Route path ='/signup' component= {SignUp} />

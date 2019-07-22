@@ -1,0 +1,72 @@
+ 
+  .wrapper {
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    perspective: 1px;
+  }
+   
+  .wrapper .section {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px; 
+    color: white;
+  }
+  
+  .parallax::after {
+    content: " ";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transform: translateZ(-1px) scale(2);
+    background-size: 100%;
+    z-index: -1;
+    background-image: url('1.png');
+  }
+
+  .parallax-2::after {
+    content: " ";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    
+    background-size: 100%;
+    z-index: -1;
+    background-image: url('2.png');
+  }
+
+  .parallax-3::after {
+    content: " ";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    
+    background-size: cover;
+    z-index: -1;
+    background-image: url('3.png');
+  }
+
+  
+  
+  .content {
+    height: 100vh;
+    
+    background-size: 100%;
+    background-image: url('2.png');
+  }
+
+  .button {
+    align-items: left;
+    padding-top: 0%;
+    padding-right: 77%;
+    
+}

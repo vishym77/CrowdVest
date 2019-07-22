@@ -1,7 +1,7 @@
 // This is a function that defines a ProjectList in a modular way
 
 import React from 'react'
-import moment from 'moment'
+
 
 
 const ProfileSummary = ({profile}) => {

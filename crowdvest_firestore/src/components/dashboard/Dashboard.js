@@ -13,7 +13,7 @@ class Dashboard extends Component{
     //console.log(this.props);
 
     const { profiles, projects, auth, notifications } = this.props;
-    if(!auth.uid) return <Redirect to='/signin' />
+    if(!auth.uid) return <Redirect to='/landing' />
 
     console.log(profiles)
 

@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 import { Redirect } from 'react-router-dom'
-import moment from 'moment'
+
 
 //Video 7 creates ProjectDetails page
 // The Posted by Group owner box doesn't match, and this is a bug
