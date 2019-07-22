@@ -29,7 +29,7 @@ class Dashboard extends Component{
 
             {/* profile list should go here */}
 
-
+            <ProfileList profiles={profiles} />
 
           </div>
           <div className= "col s12 m5 offset-m1">

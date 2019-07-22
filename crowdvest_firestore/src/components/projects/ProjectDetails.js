@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 import { Redirect } from 'react-router-dom'
+import MemberList from './MemberList'
 import JoinGroup from './JoinGroup'
 import { joinGroup } from '../../store/actions/groupActions';
 import { interfaceDeclaration } from '@babel/types';
@@ -13,7 +14,9 @@ const ProjectDetails = (props) => {
 
   //This pulls the Project Id from the url
   //Later on it should tell us which group's details we are looking at
-  const { project, auth } = props;
+  const { profiles, project, auth } = props;
+  const temp = { profiles, project}
+  console.log(profiles)
   if(!auth.uid) return <Redirect to = '/signin' />
   if (project) {
     return(
@@ -35,7 +38,7 @@ const ProjectDetails = (props) => {
 
             <p>Fund Beta Since Inception:  { project.fund_beta }</p>
 
-
+          <MemberList temp={temp}/>
       
           </div>
           <div className="card action grey lighten-3 grey-text">
@@ -62,7 +65,10 @@ const mapStateToProps = (state, ownProps) => {
   const id = ownProps.match.params.id;
   const projects = state.firestore.data.projects;
   const project = projects ? projects[id] : null
+  const profiles = state.firestore.ordered.profiles;
+  console.log(profiles)
   return {
+    profiles: profiles,
     project: project,
     auth: state.firebase.auth
   }
@@ -70,6 +76,7 @@ const mapStateToProps = (state, ownProps) => {
 export default compose(
   connect(mapStateToProps),
   firestoreConnect([
-    { collection: 'projects' }
+    { collection: 'projects'},
+    { collection: 'profiles', orderBy: ['userName']}
   ])
 )(ProjectDetails)
