@@ -46,7 +46,7 @@ const ProjectDetails = (props) => {
           </div>
         </div>
         
-       {/* join group is linked here */}
+       <JoinGroup project={project}/>
 
       </div>
     )

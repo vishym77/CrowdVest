@@ -1,19 +1,34 @@
-
-//we probably need projectid and userid but anyparameter that lets
-// is talk to the database is fine
-
-export const joinGroup = (user, project) => {
-
-    // dispatch pushes the action item through to the reducer
-    // getState allows us to get the state of the store if we need to
-    return (dispatch, getState) => {
+export const joinGroup = (project) => {
+    return (dispatch, getState, { getFirebase, getFirestore } ) => {
+        //make async call to database
+        //dispatch dispatches an action to the reducer
 
 
+        const firestore = getFirestore();
+        const profile = getState().firebase.profile;
+       // const authorId = getState().firebase.auth.uid;
+        const requestEmail = getState().firebase.auth.email;
+        
+
+        //console.log(project)
+        //console.log(profile.firstName);
+
+        if (project.memberList.indexOf(requestEmail)  == -1 ) {
+
+        project.memberList.push(requestEmail)
+
+        }
+        
+        const ml = project.memberList
 
 
-        dispatch ({  type: 'Join_Group',  project  })
+        firestore.collection("projects").doc(project.authorEmail).update({
+            memberList: ml
+
+        }).then(() => {
+            dispatch({ type: 'CREATE_PROJECT_SUCCESS' });  
+        }).catch((err) => {
+            dispatch({ type: 'CREATE_PROJECT_ERROR', err});
+        })
     }
-
-
-
 };

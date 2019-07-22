@@ -35,6 +35,9 @@ class CreateProject extends Component {
         <form className="white" onSubmit={this.handleSubmit}>
 
           <h5 className = "grey-text text-darken-3">Create a Group</h5>
+          <p>(Only one Group Allowed per user. New Group Creations will override old Group)</p>
+
+
 
           <div className="input-field">
             <label htmlFor= "title">Group Name</label>
