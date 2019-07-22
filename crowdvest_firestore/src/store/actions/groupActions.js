@@ -6,12 +6,18 @@ export const joinGroup = (project) => {
 
         const firestore = getFirestore();
         const profile = getState().firebase.profile;
-        const authorId = getState().firebase.auth.uid;
+       // const authorId = getState().firebase.auth.uid;
+        const requestEmail = getState().firebase.auth.email;
+        
 
         //console.log(project)
         //console.log(profile.firstName);
 
-        project.memberList.push(getState().firebase.auth.email)
+        if (project.memberList.indexOf(requestEmail)  == -1 ) {
+
+        project.memberList.push(requestEmail)
+
+        }
         
         const ml = project.memberList
 
