@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 
 
 const ProfileList = ({profiles}) => {
+  console.log(profiles)
   return(
     <div className= "profile-list section">
       { profiles && profiles.map(profile => {
