@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import { joinGroup } from '../../store/actions/groupActions' 
 import { Redirect } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 
 
 class JoinGroup extends Component { 
@@ -9,11 +10,10 @@ class JoinGroup extends Component {
       title: '',
       content: ''
     }
-  
 
     handleSubmit = (e) => {
       e.preventDefault();
-      this.props.joinGroup(this.state);
+      this.props.joinGroup(this.props.project);
       this.props.history.push('/');  }
   
   //The code below takes in Group Name and Group information(using HandleChange)
@@ -22,6 +22,7 @@ class JoinGroup extends Component {
   
     render(){
       const { auth } = this.props;
+      //console.log(this.props.project)
       if(!auth.uid) return <Redirect to = '/signin' />    //Checks if user is signedin
       return(
         <div className="container">
@@ -52,4 +53,4 @@ class JoinGroup extends Component {
       joinGroup: (project) => dispatch(joinGroup(project))
     }
   }
-  export default connect(mapStateToProps, mapDispatchToProps)(JoinGroup)
+  export default withRouter(connect(mapStateToProps, mapDispatchToProps)(JoinGroup))

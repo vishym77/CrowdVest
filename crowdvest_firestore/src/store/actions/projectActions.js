@@ -17,8 +17,7 @@ export const createProject = (project) => {
             authorEmail: authorEmail,
             authorId: authorId,
             createdAt: new Date(),
-            requestList: [],
-            memberList: [profile.firstName] 
+            memberList: [authorEmail] 
 
         }).then(() => {
             dispatch({ type: 'CREATE_PROJECT_SUCCESS' });  
