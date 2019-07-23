@@ -9,7 +9,7 @@ const MemberList = (temp) => {
         <h5>Members: </h5>
         { temp.temp.project.memberList.map( member => {
             return(
-                <div class="card-panel hoverable"> {member} </div>
+                <p>  {member}  </p>
             )
         })}
       </div>
