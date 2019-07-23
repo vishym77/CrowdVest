@@ -15,7 +15,6 @@ const ProjectDetails = (props) => {
   //This pulls the Project Id from the url
   //Later on it should tell us which group's details we are looking at
   const { profiles, project, auth } = props;
-  const temp = { profiles, project}
   console.log(profiles)
   if(!auth.uid) return <Redirect to = '/signin' />
   if (project) {
@@ -38,7 +37,7 @@ const ProjectDetails = (props) => {
 
             <p>Fund Beta Since Inception:  { project.fund_beta }</p>
 
-          <MemberList temp={temp}/>
+          <MemberList project={project}/>
       
           </div>
           <div className="card action grey lighten-3 grey-text">
